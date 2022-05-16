@@ -12,5 +12,5 @@
         <param name="io_method" value="mmap" />
     </node>
 
-	<node pkg="" type="cam_check.py" name="cam_check" output="screen"/>	
+	<node pkg="xycar-check" type="cam_check.py" name="cam_check" output="screen"/>	
 </launch>
