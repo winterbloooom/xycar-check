@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+	<include file="$(find xycar_motor)/launch/xycar_motor.launch"/>
+
+	<node pkg="" type="motor_check.py" name="motor_check" output="screen"/>
+</launch>

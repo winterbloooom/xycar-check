@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <include file="$(find xycar_lidar)/launch/lidar_noviewer.launch"/>
+
+	<node pkg="" type="lidar_check.py" name="lidar_check" output="screen"/>
+
+	<node pkg="rviz" type="rviz" name="rviz_auto" args="-d $(find )/rviz/rviz_lidar.rviz" />	
+</launch>
