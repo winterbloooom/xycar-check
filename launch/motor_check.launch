@@ -3,5 +3,5 @@
 <launch>
 	<include file="$(find xycar_motor)/launch/xycar_motor.launch"/>
 
-	<node pkg="" type="motor_check.py" name="motor_check" output="screen"/>
+	<node pkg="xycar-check" type="motor_check.py" name="motor_check" output="screen"/>
 </launch>

@@ -16,9 +16,9 @@ class LineStrip:
         self.mark.type = Marker.LINE_STRIP
         self.mark.action = Marker.ADD
         self.mark.color = ColorRGBA(1, 1, 1, 1)
-        self.mark.scale.x = 0.05
+        self.mark.scale.x = 0.02
         self.mark.pose.orientation.w = 1        
-        self.mark.points.append(Point(1, 1, 0))
+        self.mark.points.append(Point(0, 0, 0))
         self.mark.points.append(Point(p2[0], p2[1], 0))
 
 class Text:
@@ -30,9 +30,9 @@ class Text:
         self.mark.type = Marker.TEXT_VIEW_FACING
         self.mark.action = Marker.ADD
         self.mark.color = ColorRGBA(1, 1, 1, 1)
-        self.mark.scale.z = 0.5
+        self.mark.scale.z = 0.4
         self.mark.text = text
-        self.mark.pose.position = Point(pose[0], pose[1], 0.05)
+        self.mark.pose.position = Point(pose[0], pose[1], 0.1)
 
 # ranges = []
 # angle_min = 0
@@ -53,12 +53,14 @@ pub = rospy.Publisher("/lidar_rviz", MarkerArray, queue_size=10)
 rate = rospy.Rate(10)
 
 while not rospy.is_shutdown():
-    for angle in range(0, 331, 30):
-        markers = MarkerArray()
+    markers = MarkerArray()
+    for angle in range(0, 361, 30):
         p2 = [2 * math.cos(math.radians(angle)),\
               2 * math.sin(math.radians(angle))]
+        p2_txt = [2.3 * math.cos(math.radians(angle)),\
+                  2.3 * math.sin(math.radians(angle))]
         line = LineStrip(angle, p2)
-        text = Text(angle+1, angle, p2)
+        text = Text(angle+1, str(angle), p2_txt)
         markers.markers.append(line.mark)
         markers.markers.append(text.mark)
     pub.publish(markers)

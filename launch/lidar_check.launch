@@ -3,7 +3,7 @@
 <launch>
     <include file="$(find xycar_lidar)/launch/lidar_noviewer.launch"/>
 
-	<node pkg="" type="lidar_check.py" name="lidar_check" output="screen"/>
+	<node pkg="xycar-check" type="lidar_check.py" name="lidar_check" output="screen"/>
 
-	<node pkg="rviz" type="rviz" name="rviz_auto" args="-d $(find )/rviz/rviz_lidar.rviz" />	
+	<node pkg="rviz" type="rviz" name="rviz_lidar" args="-d $(find xycar-check)/rviz/rviz_lidar_setting.rviz" />	
 </launch>
